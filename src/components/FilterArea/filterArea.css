@@ -1,0 +1,55 @@
+.filterArea, .filterAreaTop, .filterAreaBottom {
+    width: 100%
+}
+
+.filterArea {
+    height: 300px;
+}
+
+.filterAreaTop {
+    height: 50%;
+    background-color: #FAF0E6;
+    position: relative;
+}
+
+.filterAreaTop > form {
+    position: absolute;
+    bottom: -20px;
+    left: 32%
+}
+
+.filterAreaBottom {
+    height: 50%;
+}
+
+.category-area {
+    min-width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-area > span {
+    cursor: pointer;
+    color: #A8A196;
+    font-size: 18px;
+    font-weight: 400;
+    transition: 0.5s;
+}
+.category-area > span:hover {
+    color: #6C3428;
+    scale: 1.1;
+}
+
+.search-box {
+    border: 2px solid #A8A196;
+    padding: 9px;
+    width: 400px
+}
+
+.search-button {
+    text-decoration: none;
+    background-color: #A8A196;
+    padding: 12.5px;
+    color: #fff;
+    border: none;
+}
