@@ -32,12 +32,12 @@
     cursor: pointer;
     color: #A8A196;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     transition: 0.5s;
 }
 .category-area > span:hover {
     color: #6C3428;
-    scale: 1.1;
+    scale: .9;
 }
 
 .search-box {
