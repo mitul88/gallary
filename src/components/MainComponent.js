@@ -1,12 +1,12 @@
 import React from 'react'
+import{Outlet} from 'react-router-dom'
 import Header from './header/Header'
-import Feed from './screens/Feed'
 
 const MainComponent = () => {
   return (
     <div>
       <Header />
-      <Feed />
+      <Outlet />
     </div>
   )
 }

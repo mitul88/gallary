@@ -1,11 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MainComponent from './components/MainComponent';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Feed from './components/screens/Feed/Feed';
+import ImageView from './components/screens/ImageView/ImageView';
+import Login from './components/screens/Auth/Login';
+import ProtectedRoute from './auth/ProtectedRoute';
+import Register from './components/screens/Auth/Register';
 
 function App() {
   return (
     <div className="App">
-      <MainComponent />
+      <Routes>
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/" element={<MainComponent />}>
+          <Route path="/" element={<Feed />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/image" element={<ImageView />} />
+          </Route>
+        </Route>
+        <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} /> 
+      </Routes>
     </div>
   );
 }
