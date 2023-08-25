@@ -1,6 +1,6 @@
 import React from 'react'
-import ImageGrid from '../ImageGrid/ImageGrid'
-import FilterArea from '../FilterArea/FilterArea'
+import ImageGrid from '../../shared/ImageGrid/ImageGrid'
+import FilterArea from '../../FilterArea/FilterArea'
 
 const Feed = () => {
   return (
