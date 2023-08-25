@@ -1,15 +1,21 @@
 import { useRef, useState, useEffect, useContext } from 'react'
 import AuthContext from '../../../context/AuthProvider'
+import axios from '../../../api/axios'
 import { Link, Navigate } from 'react-router-dom'
 import './auth.css'
+
+
+
+const LOGIN_URL = '/api/auth/login'
+
 
 const Login = () => {
   const {setAuth} = useContext(AuthContext)
   const userRef = useRef()
   const errRef = useRef()
 
-  const [user, setUser] = useState('')
-  const [pwd, setPwd] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
   
@@ -19,11 +25,25 @@ const Login = () => {
 
   useEffect(() => {
     setErrMsg('')
-  },[user, pwd])
+  },[email, password])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    try{
+      const response = await axios.post(LOGIN_URL,
+          JSON.stringify({email, password}),
+          {
+            headers: {'Content-Type': 'application/json'},
+            withCredentials: true,
+          }
+        );
+        console.log(JSON.stringify(response?.data))
+      setEmail('');
+      setPassword('')
+      setSuccess(true)
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -43,8 +63,8 @@ const Login = () => {
                 id="username"
                 ref={userRef}
                 autoComplete='off'
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 required
               />
             </div>
@@ -53,12 +73,12 @@ const Login = () => {
               <input 
                 type="password" 
                 id="password" 
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
               />
             </div>
-            <button>Sign in</button>
+            <button type='submit'>Sign in</button>
           </form>
           <p>
             Don't have an account ? <br />
