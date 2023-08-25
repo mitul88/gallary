@@ -1,14 +1,14 @@
 import React from 'react'
+import { Navigate, Outlet } from 'react-router-dom'
 
 const useAuth = () => {
-    return true
+    return false
 }
 
 const ProtectedRoute = () => {
-  return 
-  (
-    <div>ProtectedRoute</div>
-  )
+
+  const isAuth = useAuth()
+  return isAuth ? <Outlet /> : <Navigate to="/login" /> 
 }
 
 
