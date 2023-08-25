@@ -2,7 +2,7 @@ import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
 
 const useAuth = () => {
-    return false
+    return true
 }
 
 const ProtectedRoute = () => {

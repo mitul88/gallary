@@ -1,8 +1,10 @@
-import { useRef, useState, useEffect } from 'react'
-import './auth.css'
+import { useRef, useState, useEffect, useContext } from 'react'
+import AuthContext from '../../../context/AuthProvider'
 import { Link, Navigate } from 'react-router-dom'
+import './auth.css'
 
 const Login = () => {
+  const {setAuth} = useContext(AuthContext)
   const userRef = useRef()
   const errRef = useRef()
 
