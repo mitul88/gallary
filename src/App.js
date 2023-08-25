@@ -6,6 +6,7 @@ import Feed from './components/screens/Feed/Feed';
 import ImageView from './components/screens/ImageView/ImageView';
 import Login from './components/screens/Auth/Login';
 import ProtectedRoute from './auth/ProtectedRoute';
+import Register from './components/screens/Auth/Register';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           </Route>
         </Route>
         <Route path="/login" element={<Login />} /> 
+        <Route path="/register" element={<Register />} /> 
       </Routes>
     </div>
   );
