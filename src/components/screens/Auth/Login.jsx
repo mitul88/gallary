@@ -34,15 +34,28 @@ const Login = () => {
           JSON.stringify({email, password}),
           {
             headers: {'Content-Type': 'application/json'},
-            withCredentials: true,
+            // withCredentials: true,
           }
         );
         console.log(JSON.stringify(response?.data))
-      setEmail('');
-      setPassword('')
-      setSuccess(true)
+        const accessToken = response?.data?.accessToken
+        const roles = response?.data?.roles
+        console.log(response.data)
+        setAuth({email, password, roles, accessToken})
+        setEmail('');
+        setPassword('')
+        setSuccess(true)
     } catch(err) {
-      console.log(err)
+      if (!err?.response) {
+        setErrMsg('No server response')
+      } else if (err.response?.status === 400) {
+        setErrMsg(err.response.data.message)
+      } else if (err.response?.status === 401) {
+        setErrMsg(err.response.data.message)
+      } else {
+        setErrMsg('Login failed')
+      }
+      errRef.current.focus()
     }
   }
 
